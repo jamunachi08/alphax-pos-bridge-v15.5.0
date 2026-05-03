@@ -1,0 +1,21 @@
+{
+  "profile_id": "generic-serial-scale",
+  "label": "Generic serial scale (Toledo-compatible)",
+  "kind": "scale",
+  "vendor": "Generic",
+  "model": "RS-232 scale",
+  "notes": "Use this for an unknown scale. If your manual mentions 'Toledo', '8217', or 'continuous mode' set this profile and adjust serial settings.",
+  "connection": {
+    "transport": "serial",
+    "port": "/dev/ttyUSB1",
+    "baud": 9600,
+    "bytesize": 8,
+    "parity": "N",
+    "stopbits": 1,
+    "timeout": 1.5
+  },
+  "protocol": {
+    "name": "toledo-9091",
+    "options": { "continuous": false }
+  }
+}

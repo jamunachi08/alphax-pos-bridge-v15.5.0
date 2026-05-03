@@ -1,0 +1,45 @@
+#!/bin/bash
+# postinstall — runs after the .app is copied into /Applications.
+# Installs the LaunchAgent so the bridge starts on login.
+set -euo pipefail
+
+INSTALL_USER="${USER:-$(stat -f '%Su' /dev/console)}"
+USER_HOME=$(eval echo "~$INSTALL_USER")
+PLIST_DIR="$USER_HOME/Library/LaunchAgents"
+PLIST="$PLIST_DIR/com.alphax.pos.bridge.plist"
+
+mkdir -p "$PLIST_DIR"
+
+cat > "$PLIST" <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.alphax.pos.bridge</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Applications/AlphaX POS Bridge.app/Contents/MacOS/alphax-bridge</string>
+  </array>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <dict>
+    <key>SuccessfulExit</key>
+    <false/>
+  </dict>
+  <key>StandardOutPath</key>
+  <string>$USER_HOME/.alphax-bridge/logs/launchd.out</string>
+  <key>StandardErrorPath</key>
+  <string>$USER_HOME/.alphax-bridge/logs/launchd.err</string>
+</dict>
+</plist>
+EOF
+
+# Make sure the install user owns it (postinstall runs as root)
+chown "$INSTALL_USER" "$PLIST"
+
+# Load the agent right now (so we don't make the user log out and back in)
+sudo -u "$INSTALL_USER" launchctl load -w "$PLIST" 2>/dev/null || true
+
+exit 0

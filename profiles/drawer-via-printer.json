@@ -1,0 +1,20 @@
+{
+  "profile_id": "drawer-via-printer",
+  "label": "Cash drawer (kicked from printer RJ-11)",
+  "kind": "drawer",
+  "vendor": "Generic",
+  "model": "RJ-11 daisy-chain",
+  "notes": "The drawer plugs into the receipt printer's RJ-11 socket. The bridge sends an ESC/POS kick command through the printer. Set `via` to your printer device name.",
+  "connection": {
+    "transport": "passthrough",
+    "via": "front-printer"
+  },
+  "protocol": {
+    "name": "escpos",
+    "options": {
+      "drawer_pin": 0,
+      "drawer_on_time": 50,
+      "drawer_off_time": 250
+    }
+  }
+}

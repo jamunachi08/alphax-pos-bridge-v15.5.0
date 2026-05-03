@@ -1,0 +1,17 @@
+{
+  "profile_id": "epson-tm-t88v",
+  "label": "Epson TM-T88V (USB)",
+  "kind": "printer",
+  "vendor": "Epson",
+  "model": "TM-T88V",
+  "paper_columns": 42,
+  "connection": {
+    "transport": "usb",
+    "vendor_id": "0x04b8",
+    "product_id": "0x0202"
+  },
+  "protocol": {
+    "name": "escpos",
+    "options": { "codepage": 0, "encoding": "cp437", "cut_kind": "partial" }
+  }
+}

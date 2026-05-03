@@ -1,0 +1,48 @@
+# =============================================================================
+# Example: Restaurant setup
+#   - One Epson TM-T20III at the cashier (receipts)
+#   - One Bixolon SRP-275III in the kitchen (impact printer, survives heat)
+#   - One Star TSP143III at the bar (LAN-connected)
+#   - One cash drawer kicked through the front printer
+#   - One pole display
+# =============================================================================
+
+bridge:
+  bind_host:  "127.0.0.1"
+  bind_port:  8420
+  auth_token: "change-me-to-something-secret"
+
+devices:
+
+  # -- receipt printer at the cashier station ---------------------------
+  - name: receipt-printer
+    kind: printer
+    profile: epson-tm-t20iii
+
+  # -- kitchen printer (impact / dot matrix) ----------------------------
+  - name: kitchen-printer
+    kind: printer
+    profile: bixolon-srp-275
+
+  # -- bar printer (Star, networked) ------------------------------------
+  - name: bar-printer
+    kind: printer
+    profile: star-tsp143iii
+    connection:
+      transport: network
+      host: "192.168.1.61"
+      port: 9100
+
+  # -- cash drawer at the cashier ---------------------------------------
+  - name: drawer-1
+    kind: drawer
+    profile: drawer-via-printer
+    connection:
+      via: receipt-printer
+
+  # -- customer-facing pole display -------------------------------------
+  - name: pole-1
+    kind: display
+    profile: posiflex-pd-2800
+    connection:
+      port: "/dev/ttyUSB0"

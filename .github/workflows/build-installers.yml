@@ -1,0 +1,168 @@
+# Builds AlphaX POS Bridge installers for Windows, macOS, and Linux
+# on every release tag (and on manual workflow dispatch for testing).
+#
+# Outputs uploaded as workflow artifacts AND attached to the GitHub
+# Release if triggered by a tag push.
+
+name: Build bridge installers
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write   # needed to upload release assets
+
+jobs:
+
+  # -------------------------------------------------------------------
+  # Windows
+  # -------------------------------------------------------------------
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install build deps
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller pystray Pillow pyyaml pyserial pyusb
+          pip install -e .
+
+      - name: Run unit tests
+        run: python -m unittest tests.test_bridge
+
+      - name: Build with PyInstaller
+        run: pyinstaller packaging/pyinstaller/alphax-bridge.spec --clean --noconfirm
+
+      - name: Install Inno Setup
+        run: choco install innosetup --no-progress -y
+
+      - name: Build installer
+        shell: cmd
+        run: '"%ProgramFiles(x86)%\Inno Setup 6\ISCC.exe" packaging\windows\alphax-bridge.iss'
+
+      - name: Upload installer artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: AlphaX-POS-Bridge-windows
+          path: dist/installers/*.exe
+
+      - name: Attach to release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/installers/*.exe
+
+  # -------------------------------------------------------------------
+  # macOS (Intel + Apple Silicon)
+  # -------------------------------------------------------------------
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install build deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller pystray Pillow pyyaml pyserial pyusb
+          pip install -e .
+
+      - name: Run unit tests
+        run: python -m unittest tests.test_bridge
+
+      - name: Build with PyInstaller
+        run: pyinstaller packaging/pyinstaller/alphax-bridge.spec --clean --noconfirm
+
+      - name: Build .pkg
+        env:
+          # These come from repo secrets when configured for production
+          # signing. Without them, build-pkg.sh produces an unsigned pkg.
+          DEVELOPER_ID:        ${{ secrets.MACOS_DEVELOPER_ID }}
+          NOTARIZE_USER:       ${{ secrets.NOTARIZE_USER }}
+          NOTARIZE_TEAM:       ${{ secrets.NOTARIZE_TEAM }}
+          NOTARIZE_PASSWORD:   ${{ secrets.NOTARIZE_PASSWORD }}
+        run: bash packaging/macos/build-pkg.sh
+
+      - name: Upload installer artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: AlphaX-POS-Bridge-macos
+          path: dist/installers/*.pkg
+
+      - name: Attach to release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/installers/*.pkg
+
+  # -------------------------------------------------------------------
+  # Linux (.deb and AppImage)
+  # -------------------------------------------------------------------
+  linux:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: System deps for building
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dpkg-dev libusb-1.0-0 python3-tk fuse libfuse2
+
+      - name: Install build deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller pystray Pillow pyyaml pyserial pyusb
+          pip install -e .
+
+      - name: Run unit tests
+        run: python -m unittest tests.test_bridge
+
+      - name: Build with PyInstaller
+        run: pyinstaller packaging/pyinstaller/alphax-bridge.spec --clean --noconfirm
+
+      - name: Build .deb
+        run: bash packaging/linux/build-deb.sh
+
+      - name: Download appimagetool
+        run: |
+          wget -q https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
+          chmod +x appimagetool-x86_64.AppImage
+          sudo mv appimagetool-x86_64.AppImage /usr/local/bin/appimagetool
+
+      - name: Build AppImage
+        run: bash packaging/linux/build-appimage.sh
+
+      - name: Upload installer artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: AlphaX-POS-Bridge-linux
+          path: |
+            dist/installers/*.deb
+            dist/installers/*.AppImage
+
+      - name: Attach to release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/installers/*.deb
+            dist/installers/*.AppImage

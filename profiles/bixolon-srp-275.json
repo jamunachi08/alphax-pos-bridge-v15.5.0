@@ -1,0 +1,18 @@
+{
+  "profile_id": "bixolon-srp-275",
+  "label": "Bixolon SRP-275III (impact, kitchen)",
+  "kind": "printer",
+  "vendor": "Bixolon",
+  "model": "SRP-275III",
+  "paper_columns": 42,
+  "notes": "Impact (dot matrix) printer commonly used for kitchen tickets — survives heat and grease.",
+  "connection": {
+    "transport": "usb",
+    "vendor_id": "0x1504",
+    "product_id": "0x0006"
+  },
+  "protocol": {
+    "name": "escpos",
+    "options": { "codepage": 0, "encoding": "cp437" }
+  }
+}

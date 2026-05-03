@@ -1,0 +1,40 @@
+# =============================================================================
+# Example: Café setup
+#   - One Epson TM-T20III receipt printer (USB)
+#   - One cash drawer kicked through the printer
+#   - One Posiflex PD-2800 customer pole display (USB-to-serial)
+#
+# Save this as `config.yaml` next to where you run `alphax-bridge`.
+# =============================================================================
+
+bridge:
+  bind_host:  "127.0.0.1"
+  bind_port:  8420
+  # Pick a long random string. The Vue SPA sends it as a Bearer token.
+  # If empty/missing, auth is disabled (only do this on a trusted device).
+  auth_token: "change-me-to-something-secret"
+  cors_origin: "*"
+
+devices:
+
+  # -- receipt printer ---------------------------------------------------
+  - name: front-printer
+    kind: printer
+    profile: epson-tm-t20iii
+    # The profile already has the Epson USB IDs. We don't override anything.
+
+  # -- cash drawer (kicked through the printer's RJ-11 socket) ----------
+  - name: drawer-1
+    kind: drawer
+    profile: drawer-via-printer
+    connection:
+      via: front-printer    # name of the printer device above
+
+  # -- customer pole display (Posiflex PD-2800 over USB-to-serial) ------
+  - name: pole-1
+    kind: display
+    profile: posiflex-pd-2800
+    connection:
+      # Linux/macOS: /dev/ttyUSB0 or /dev/cu.usbserial-XXXX
+      # Windows: COM3, COM4, ... (run `alphax-bridge --discover` to find it)
+      port: "/dev/ttyUSB0"

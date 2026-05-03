@@ -1,0 +1,15 @@
+{
+  "profile_id": "network-intl-terminal",
+  "label": "Network International (UAE / GCC)",
+  "kind": "terminal",
+  "vendor": "Network International",
+  "model": "N-Genius online",
+  "provider": "network-intl",
+  "notes": "N-Genius is Network International's hosted payment platform, dominant in UAE and used across GCC. The orderReference and outletId need to come from your N-Genius merchant portal. The charge_path includes <<OUTLET>> as a placeholder — substitute your outlet ID in your config or override charge_path in provider_options.",
+  "provider_options": {
+    "merchant_id": "REPLACE_WITH_YOUR_OUTLET_ID",
+    "auth_value": "Bearer REPLACE_WITH_YOUR_ACCESS_TOKEN",
+    "base_url": "https://api-gateway.sandbox.ngenius-payments.com",
+    "charge_path": "/transactions/outlets/REPLACE_WITH_YOUR_OUTLET_ID/orders"
+  }
+}

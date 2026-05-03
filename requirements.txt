@@ -1,0 +1,18 @@
+# AlphaX POS Bridge — runtime dependencies
+#
+# The core HTTP server uses only Python stdlib. Hardware drivers below are
+# only imported when their transport is actually configured, so you can
+# install just the ones you need.
+
+# USB transport (receipt printers, USB drawers)
+pyusb>=1.2,<2.0
+
+# Serial transport (RS-232 scales, VFD pole displays, USB-to-serial)
+pyserial>=3.5,<4.0
+
+# Optional: YAML config files (JSON works without it)
+PyYAML>=6.0; extra == "yaml"
+
+# Optional: Arabic shaping for legacy printers without proper Arabic codepage
+arabic-reshaper>=3.0; extra == "arabic"
+python-bidi>=0.4;     extra == "arabic"

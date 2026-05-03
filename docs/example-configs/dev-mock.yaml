@@ -1,0 +1,27 @@
+# =============================================================================
+# Example: development / no real hardware
+#
+# Lets you test the Vue SPA's auto-print and auto-drawer integration without
+# any physical devices. Receipts get appended to /tmp/test-receipts.txt and
+# drawer kicks are hexdumped to stdout.
+# =============================================================================
+
+bridge:
+  bind_host:  "127.0.0.1"
+  bind_port:  8420
+  auth_token: ""             # disable auth for local dev
+
+devices:
+
+  - name: receipt-printer
+    kind: printer
+    connection:
+      transport: file
+      path: "/tmp/test-receipts.txt"
+    protocol: generic-line
+
+  - name: drawer-1
+    kind: drawer
+    connection:
+      transport: stdout
+    protocol: raw

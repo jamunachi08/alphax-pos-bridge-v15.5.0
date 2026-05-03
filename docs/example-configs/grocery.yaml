@@ -1,0 +1,39 @@
+# =============================================================================
+# Example: Grocery / supermarket lane
+#   - One Epson TM-T88V receipt printer
+#   - One cash drawer
+#   - One Mettler-Toledo Prix 3 weighing scale (RS-232 7-E-1 9600)
+#   - One pole display
+# =============================================================================
+
+bridge:
+  bind_host:  "127.0.0.1"
+  bind_port:  8420
+  auth_token: "change-me-to-something-secret"
+
+devices:
+
+  - name: receipt-printer
+    kind: printer
+    profile: epson-tm-t88v
+
+  - name: drawer-1
+    kind: drawer
+    profile: drawer-via-printer
+    connection:
+      via: receipt-printer
+
+  # -- scale -- the cashier puts produce on this; the SPA reads weight
+  #             when the cashier scans a "weighed item" or taps the scale chip
+  - name: scale-1
+    kind: scale
+    profile: toledo-prix-3
+    connection:
+      port: "/dev/ttyUSB1"
+      # Toledo defaults are 7-E-1; the profile already sets these.
+
+  - name: pole-1
+    kind: display
+    profile: generic-vfd-cd5220
+    connection:
+      port: "/dev/ttyUSB0"

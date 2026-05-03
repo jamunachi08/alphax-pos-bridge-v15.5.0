@@ -1,0 +1,15 @@
+{
+  "profile_id": "geidea-terminal",
+  "label": "Geidea card terminal (KSA / GCC)",
+  "kind": "terminal",
+  "vendor": "Geidea",
+  "model": "Direct API integration",
+  "provider": "geidea",
+  "notes": "Geidea is widely deployed across KSA and GCC. You'll need a merchant account, sandbox credentials, and certification testing before going live. In your config.yaml, fill in merchant_id, terminal_id, and auth_value (your Bearer token). For sandbox, point base_url to the test environment.",
+  "provider_options": {
+    "merchant_id": "REPLACE_WITH_YOUR_MID",
+    "terminal_id": "REPLACE_WITH_YOUR_TID",
+    "auth_value": "Bearer REPLACE_WITH_YOUR_API_KEY",
+    "base_url": "https://api.merchant.geidea.net/pgw/api/v6/direct"
+  }
+}

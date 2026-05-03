@@ -1,0 +1,18 @@
+{
+  "profile_id": "star-tsp143iii",
+  "label": "Star TSP143III (USB)",
+  "kind": "printer",
+  "vendor": "Star Micronics",
+  "model": "TSP143III",
+  "paper_columns": 42,
+  "notes": "Star line-mode printer. For LAN model use transport: network, port: 9100.",
+  "connection": {
+    "transport": "usb",
+    "vendor_id": "0x0519",
+    "product_id": "0x0017"
+  },
+  "protocol": {
+    "name": "star",
+    "options": { "encoding": "cp437" }
+  }
+}

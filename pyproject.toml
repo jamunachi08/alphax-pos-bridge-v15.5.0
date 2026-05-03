@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alphax-pos-bridge"
+version = "15.5.0"
+description = "Universal hardware bridge for AlphaX POS — printers, cash drawers, customer displays, scales"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "AlphaX" }]
+keywords = ["pos", "escpos", "receipt-printer", "cash-drawer", "scale", "vfd"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Office/Business :: Financial :: Point-Of-Sale",
+]
+dependencies = [
+    "pyusb>=1.2,<2.0",
+    "pyserial>=3.5,<4.0",
+]
+
+[project.optional-dependencies]
+yaml   = ["PyYAML>=6.0"]
+arabic = ["arabic-reshaper>=3.0", "python-bidi>=0.4"]
+tray   = ["pystray>=0.19", "Pillow>=9.0", "PyYAML>=6.0"]
+all    = ["PyYAML>=6.0", "arabic-reshaper>=3.0", "python-bidi>=0.4", "pystray>=0.19", "Pillow>=9.0"]
+
+[project.scripts]
+alphax-bridge        = "alphax_bridge.__main__:main"
+alphax-bridge-tray   = "alphax_bridge.tray:main"
+alphax-bridge-wizard = "alphax_bridge.wizard:main"
+
+[tool.setuptools]
+packages = ["alphax_bridge"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+alphax_bridge = ["../profiles/*.json", "../profiles/*.yaml"]

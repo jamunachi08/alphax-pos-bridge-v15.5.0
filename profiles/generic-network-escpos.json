@@ -1,0 +1,19 @@
+{
+  "profile_id": "generic-network-escpos",
+  "label": "Generic ESC/POS Ethernet printer",
+  "kind": "printer",
+  "vendor": "Generic",
+  "model": "Ethernet ESC/POS",
+  "paper_columns": 42,
+  "notes": "Set host and (optionally) port in your config. Works for most networked Epson, Bixolon, Star, and OEM thermals.",
+  "connection": {
+    "transport": "network",
+    "host": "192.168.1.50",
+    "port": 9100,
+    "timeout": 3.0
+  },
+  "protocol": {
+    "name": "escpos",
+    "options": { "codepage": 0, "encoding": "cp437", "cut_kind": "partial" }
+  }
+}

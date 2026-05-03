@@ -1,0 +1,14 @@
+{
+  "profile_id": "drawer-usb-direct",
+  "label": "USB cash drawer (direct)",
+  "kind": "drawer",
+  "vendor": "Generic",
+  "model": "USB drawer (HID-style kick)",
+  "notes": "Used for drawers with their own USB port (uncommon — most drawers daisy-chain off a printer). Fill in vendor_id/product_id from `--discover`.",
+  "connection": {
+    "transport": "usb"
+  },
+  "protocol": {
+    "name": "raw"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "profile_id": "bizerba-bs800",
+  "label": "Bizerba BS800 / BC II (BPlus protocol)",
+  "kind": "scale",
+  "vendor": "Bizerba",
+  "model": "BS800 / BC II",
+  "notes": "Set the scale to 'BPlus' protocol mode in its menu. Default 9600 8-N-1.",
+  "connection": {
+    "transport": "serial",
+    "port": "/dev/ttyUSB1",
+    "baud": 9600,
+    "bytesize": 8,
+    "parity": "N",
+    "stopbits": 1,
+    "timeout": 1.5
+  },
+  "protocol": {
+    "name": "bizerba-bp",
+    "options": {}
+  }
+}

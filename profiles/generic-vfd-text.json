@@ -1,0 +1,18 @@
+{
+  "profile_id": "generic-vfd-text",
+  "label": "Generic VFD pole (plain text)",
+  "kind": "display",
+  "vendor": "Generic",
+  "model": "Plain-text 2x20",
+  "line_width": 20,
+  "notes": "Last-resort fallback. Use when the device responds to plain CR-LF separated lines but doesn't speak CD5220.",
+  "connection": {
+    "transport": "serial",
+    "port": "/dev/ttyUSB0",
+    "baud": 9600
+  },
+  "protocol": {
+    "name": "vfd-text",
+    "options": { "encoding": "ascii", "line_width": 20 }
+  }
+}

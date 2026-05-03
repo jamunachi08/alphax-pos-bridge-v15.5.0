@@ -1,0 +1,21 @@
+{
+  "profile_id": "cas-pd-ii",
+  "label": "CAS PD-II / AD-series (RS-232)",
+  "kind": "scale",
+  "vendor": "CAS",
+  "model": "PD-II / AD-1, AD-2",
+  "notes": "Widely used in retail and grocery. Default 9600 8-N-1.",
+  "connection": {
+    "transport": "serial",
+    "port": "/dev/ttyUSB1",
+    "baud": 9600,
+    "bytesize": 8,
+    "parity": "N",
+    "stopbits": 1,
+    "timeout": 1.5
+  },
+  "protocol": {
+    "name": "cas-ad",
+    "options": {}
+  }
+}
