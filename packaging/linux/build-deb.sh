@@ -6,11 +6,11 @@
 #   - dpkg-deb installed (ships with Debian; on RPM systems: apt install dpkg)
 #
 # Usage:  bash packaging/linux/build-deb.sh
-# Output: dist/installers/alphax-pos-bridge_15.5.1_amd64.deb
+# Output: dist/installers/alphax-pos-bridge_15.5.2_amd64.deb
 
 set -euo pipefail
 
-VERSION="15.5.1"
+VERSION="15.5.2"
 ARCH="$(dpkg --print-architecture 2>/dev/null || echo amd64)"
 HERE="$(cd "$(dirname "$0")" && pwd)"
 ROOT="$(cd "$HERE/../.." && pwd)"
