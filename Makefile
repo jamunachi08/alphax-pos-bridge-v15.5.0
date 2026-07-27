@@ -14,7 +14,7 @@
 #   make clean        # nuke dist/ and build/
 
 PYTHON ?= python3
-VERSION := 15.5.2
+VERSION := 15.5.3
 
 .PHONY: help
 help:
