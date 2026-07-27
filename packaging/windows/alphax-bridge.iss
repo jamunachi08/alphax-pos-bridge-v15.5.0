@@ -5,7 +5,7 @@
 ; Prereq: PyInstaller has produced dist\alphax-bridge\ from the .spec file.
 
 #define AppName       "AlphaX POS Bridge"
-#define AppVersion    "15.5.0"
+#define AppVersion    "15.5.1"
 #define AppPublisher  "AlphaX"
 #define AppURL        "https://github.com/alphax/alphax-pos-suite"
 #define AppExeName    "alphax-bridge.exe"

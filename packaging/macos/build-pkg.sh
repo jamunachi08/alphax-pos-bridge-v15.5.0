@@ -13,11 +13,11 @@
 # user gets a "unverified developer" prompt unless they right-click open).
 #
 # Usage:  bash packaging/macos/build-pkg.sh
-# Output: dist/installers/AlphaX-POS-Bridge-15.5.0.pkg
+# Output: dist/installers/AlphaX-POS-Bridge-15.5.1.pkg
 
 set -euo pipefail
 
-VERSION="15.5.0"
+VERSION="15.5.1"
 HERE="$(cd "$(dirname "$0")" && pwd)"
 ROOT="$(cd "$HERE/../.." && pwd)"
 APP="$ROOT/dist/AlphaX POS Bridge.app"

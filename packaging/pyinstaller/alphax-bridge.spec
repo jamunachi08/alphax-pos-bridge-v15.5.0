@@ -144,8 +144,8 @@ if sys.platform == "darwin":
         icon=ICON,
         bundle_identifier="com.alphax.pos.bridge",
         info_plist={
-            "CFBundleShortVersionString": "15.5.0",
-            "CFBundleVersion": "15.5.0",
+            "CFBundleShortVersionString": "15.5.1",
+            "CFBundleVersion": "15.5.1",
             "NSHighResolutionCapable": "True",
             "LSUIElement": "True",                # background-only app (tray)
             "LSMinimumSystemVersion": "10.15",

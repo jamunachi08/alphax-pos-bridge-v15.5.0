@@ -8,11 +8,11 @@
 #       (download appimagetool-x86_64.AppImage, chmod +x it, put in PATH)
 #
 # Usage:  bash packaging/linux/build-appimage.sh
-# Output: dist/installers/AlphaX-POS-Bridge-15.5.0-x86_64.AppImage
+# Output: dist/installers/AlphaX-POS-Bridge-15.5.1-x86_64.AppImage
 
 set -euo pipefail
 
-VERSION="15.5.0"
+VERSION="15.5.1"
 HERE="$(cd "$(dirname "$0")" && pwd)"
 ROOT="$(cd "$HERE/../.." && pwd)"
 PYI_OUT="$ROOT/dist/alphax-bridge"
