@@ -36,6 +36,7 @@ from typing import Optional
 from urllib.parse import parse_qs, urlparse
 
 from . import __version__
+from .identity import system_info
 from .registry import DeviceRegistry
 from .renderer import render_display_text, render_to_bytes
 from .transports import discover_all
@@ -104,6 +105,7 @@ def make_app(registry: DeviceRegistry, auth_token: Optional[str] = None,
                         "version": __version__,
                         "devices": len(registry.all()),
                         "profiles": len(registry.list_profiles()),
+                        "system": system_info(),
                     })
                 if url.path == "/devices":
                     return self._json(HTTPStatus.OK, registry.info())

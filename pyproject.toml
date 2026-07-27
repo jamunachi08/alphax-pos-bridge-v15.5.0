@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "alphax-pos-bridge"
-version = "15.5.2"
+version = "15.5.3"
 description = "Universal hardware bridge for AlphaX POS — printers, cash drawers, customer displays, scales"
 readme = "README.md"
 requires-python = ">=3.10"
