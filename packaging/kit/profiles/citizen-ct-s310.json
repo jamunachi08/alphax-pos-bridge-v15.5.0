@@ -1,0 +1,17 @@
+{
+  "profile_id": "citizen-ct-s310",
+  "label": "Citizen CT-S310II (USB)",
+  "kind": "printer",
+  "vendor": "Citizen",
+  "model": "CT-S310II",
+  "paper_columns": 42,
+  "connection": {
+    "transport": "usb",
+    "vendor_id": "0x1d90",
+    "product_id": "0x2060"
+  },
+  "protocol": {
+    "name": "escpos",
+    "options": { "codepage": 0, "encoding": "cp437" }
+  }
+}

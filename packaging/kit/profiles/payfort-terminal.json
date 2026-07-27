@@ -1,0 +1,17 @@
+{
+  "profile_id": "payfort-terminal",
+  "label": "Payfort / Amazon Payment Services",
+  "kind": "terminal",
+  "vendor": "Amazon Payment Services",
+  "model": "Payfort REST API",
+  "provider": "payfort",
+  "notes": "Amazon Payment Services (formerly Payfort) is widely used across MENA. Get test credentials from your APS merchant portal. Sandbox base_url: https://sbpaymentservices.payfort.com/FortAPI. The adapter signs every request with HMAC-SHA-256 using sha_request_phrase from your portal, and verifies inbound responses with sha_response_phrase. Both phrases are required for production; the adapter will refuse to trust an unsigned response if you've configured sha_response_phrase. See bridge/docs/card-terminals.md for the full setup walkthrough.",
+  "provider_options": {
+    "merchant_identifier":  "REPLACE_WITH_YOUR_MERCHANT_IDENTIFIER",
+    "access_code":          "REPLACE_WITH_YOUR_ACCESS_CODE",
+    "sha_request_phrase":   "REPLACE_WITH_YOUR_SHA_REQUEST_PHRASE",
+    "sha_response_phrase":  "REPLACE_WITH_YOUR_SHA_RESPONSE_PHRASE",
+    "language":             "en",
+    "base_url":             "https://sbpaymentservices.payfort.com/FortAPI"
+  }
+}

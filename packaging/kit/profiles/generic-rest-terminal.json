@@ -1,0 +1,29 @@
+{
+  "profile_id": "generic-rest-terminal",
+  "label": "Generic REST card terminal",
+  "kind": "terminal",
+  "vendor": "Generic",
+  "model": "JSON HTTP API",
+  "provider": "generic-rest",
+  "notes": "Use this for any provider that exposes a JSON HTTP API and isn't in the built-in list. All field mappings (request payload, response fields) are configurable in provider_options. See bridge/docs/card-terminals.md for the full list of options.",
+  "provider_options": {
+    "base_url": "https://api.example.com/pos/v1",
+    "auth_header": "Authorization",
+    "auth_value": "Bearer REPLACE_WITH_YOUR_KEY",
+    "charge_path": "/charge",
+    "refund_path": "/refund",
+    "cancel_path": "/cancel",
+    "payload_amount": "amount",
+    "payload_currency": "currency",
+    "payload_invoice": "reference",
+    "payload_idem": "idempotency_key",
+    "response_status": "status",
+    "response_approved": "APPROVED",
+    "response_declined": "DECLINED",
+    "response_txn_id": "transaction_id",
+    "response_auth": "auth_code",
+    "response_pan": "masked_pan",
+    "response_brand": "card_brand",
+    "response_decline_reason": "decline_reason"
+  }
+}

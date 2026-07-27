@@ -1,0 +1,21 @@
+{
+  "profile_id": "generic-vfd-cd5220",
+  "label": "Generic VFD pole display (CD5220)",
+  "kind": "display",
+  "vendor": "Generic",
+  "model": "CD5220-compatible",
+  "line_width": 20,
+  "notes": "Use this for any pole display whose manual mentions 'CD5220', 'Aedex', or 'EPSON-compatible' command set.",
+  "connection": {
+    "transport": "serial",
+    "port": "/dev/ttyUSB0",
+    "baud": 9600,
+    "bytesize": 8,
+    "parity": "N",
+    "stopbits": 1
+  },
+  "protocol": {
+    "name": "vfd-cd5220",
+    "options": { "encoding": "ascii", "line_width": 20 }
+  }
+}

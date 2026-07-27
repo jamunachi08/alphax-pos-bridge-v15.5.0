@@ -1,0 +1,18 @@
+{
+  "profile_id": "epson-tm-m30",
+  "label": "Epson TM-m30 (USB or Ethernet)",
+  "kind": "printer",
+  "vendor": "Epson",
+  "model": "TM-m30",
+  "paper_columns": 42,
+  "notes": "USB defaults shown. For Ethernet, set transport: network, host: <ip>, port: 9100.",
+  "connection": {
+    "transport": "usb",
+    "vendor_id": "0x04b8",
+    "product_id": "0x0e25"
+  },
+  "protocol": {
+    "name": "escpos",
+    "options": { "codepage": 0, "encoding": "cp437", "cut_kind": "partial" }
+  }
+}

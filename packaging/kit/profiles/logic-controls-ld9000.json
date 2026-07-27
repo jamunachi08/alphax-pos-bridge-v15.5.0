@@ -1,0 +1,20 @@
+{
+  "profile_id": "logic-controls-ld9000",
+  "label": "Logic Controls LD9000 (VFD pole)",
+  "kind": "display",
+  "vendor": "Logic Controls",
+  "model": "LD9000",
+  "line_width": 20,
+  "connection": {
+    "transport": "serial",
+    "port": "COM2",
+    "baud": 9600,
+    "bytesize": 8,
+    "parity": "N",
+    "stopbits": 1
+  },
+  "protocol": {
+    "name": "vfd-cd5220",
+    "options": { "encoding": "ascii", "line_width": 20 }
+  }
+}

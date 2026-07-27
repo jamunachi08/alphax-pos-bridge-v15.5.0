@@ -1,0 +1,21 @@
+{
+  "profile_id": "toledo-prix-3",
+  "label": "Mettler-Toledo Prix 3 / 8217 (RS-232)",
+  "kind": "scale",
+  "vendor": "Mettler-Toledo",
+  "model": "Prix 3 / 8217",
+  "notes": "Toledo 8217 is the canonical name; many Mettler-Toledo grocery scales speak this. Default serial settings: 9600 7-E-1.",
+  "connection": {
+    "transport": "serial",
+    "port": "/dev/ttyUSB1",
+    "baud": 9600,
+    "bytesize": 7,
+    "parity": "E",
+    "stopbits": 1,
+    "timeout": 1.5
+  },
+  "protocol": {
+    "name": "toledo-9091",
+    "options": { "continuous": false }
+  }
+}

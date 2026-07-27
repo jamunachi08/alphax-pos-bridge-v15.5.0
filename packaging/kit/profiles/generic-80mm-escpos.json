@@ -1,0 +1,23 @@
+{
+  "profile_id": "generic-80mm-escpos",
+  "label": "Generic 80mm ESC/POS thermal",
+  "kind": "printer",
+  "vendor": "Generic",
+  "model": "80mm ESC/POS",
+  "paper_columns": 42,
+  "notes": "Works for most cheap 80mm thermal printers. Use this if your model isn't in the list below.",
+  "connection": {
+    "transport": "usb"
+  },
+  "protocol": {
+    "name": "escpos",
+    "options": {
+      "codepage": 0,
+      "encoding": "cp437",
+      "cut_kind": "partial",
+      "drawer_pin": 0,
+      "drawer_on_time": 50,
+      "drawer_off_time": 250
+    }
+  }
+}

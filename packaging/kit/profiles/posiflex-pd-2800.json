@@ -1,0 +1,21 @@
+{
+  "profile_id": "posiflex-pd-2800",
+  "label": "Posiflex PD-2800 / PD-2700 (VFD pole)",
+  "kind": "display",
+  "vendor": "Posiflex",
+  "model": "PD-2800",
+  "line_width": 20,
+  "notes": "Speaks the CD5220 protocol. Connect via included USB-to-serial adapter, then set the COM port.",
+  "connection": {
+    "transport": "serial",
+    "port": "/dev/ttyUSB0",
+    "baud": 9600,
+    "bytesize": 8,
+    "parity": "N",
+    "stopbits": 1
+  },
+  "protocol": {
+    "name": "vfd-cd5220",
+    "options": { "encoding": "ascii", "line_width": 20 }
+  }
+}

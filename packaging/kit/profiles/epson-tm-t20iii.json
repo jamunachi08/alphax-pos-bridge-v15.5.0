@@ -1,0 +1,25 @@
+{
+  "profile_id": "epson-tm-t20iii",
+  "label": "Epson TM-T20III (USB)",
+  "kind": "printer",
+  "vendor": "Epson",
+  "model": "TM-T20III",
+  "paper_columns": 42,
+  "notes": "USB connection. Vendor 0x04b8, product 0x0e15. For Ethernet model use generic-network-escpos profile and set host:port.",
+  "connection": {
+    "transport": "usb",
+    "vendor_id": "0x04b8",
+    "product_id": "0x0e15"
+  },
+  "protocol": {
+    "name": "escpos",
+    "options": {
+      "codepage": 0,
+      "encoding": "cp437",
+      "cut_kind": "partial",
+      "drawer_pin": 0,
+      "drawer_on_time": 50,
+      "drawer_off_time": 250
+    }
+  }
+}

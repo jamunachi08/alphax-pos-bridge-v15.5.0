@@ -1,0 +1,15 @@
+{
+  "profile_id": "hyperpay-terminal",
+  "label": "HyperPay card terminal (KSA / GCC)",
+  "kind": "terminal",
+  "vendor": "HyperPay",
+  "model": "OPP / Copy & Pay API",
+  "provider": "hyperpay",
+  "notes": "HyperPay is a widely-used payment gateway in KSA and GCC. Get sandbox credentials from your HyperPay merchant dashboard before flipping base_url to production. Production base_url: https://oppwa.com/v1",
+  "provider_options": {
+    "merchant_id": "REPLACE_WITH_YOUR_ENTITY_ID",
+    "terminal_id": "REPLACE_WITH_YOUR_CHANNEL_ID",
+    "auth_value": "Bearer REPLACE_WITH_YOUR_ACCESS_TOKEN",
+    "base_url": "https://eu-test.oppwa.com/v1"
+  }
+}

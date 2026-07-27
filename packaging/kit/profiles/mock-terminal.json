@@ -1,0 +1,12 @@
+{
+  "profile_id": "mock-terminal",
+  "label": "Mock card terminal (training / demo)",
+  "kind": "terminal",
+  "vendor": "AlphaX",
+  "model": "Mock",
+  "provider": "mock",
+  "notes": "Always approves after 1.5 seconds. Set decline_amount in provider_options to a specific value to make that exact amount decline (useful for training cashiers on the decline path).",
+  "provider_options": {
+    "delay_seconds": 1.5
+  }
+}

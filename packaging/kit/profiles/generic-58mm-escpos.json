@@ -1,0 +1,17 @@
+{
+  "profile_id": "generic-58mm-escpos",
+  "label": "Generic 58mm ESC/POS thermal",
+  "kind": "printer",
+  "vendor": "Generic",
+  "model": "58mm ESC/POS",
+  "paper_columns": 32,
+  "connection": { "transport": "usb" },
+  "protocol": {
+    "name": "escpos",
+    "options": {
+      "codepage": 0,
+      "encoding": "cp437",
+      "cut_kind": "partial"
+    }
+  }
+}
